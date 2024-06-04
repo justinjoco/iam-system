@@ -20,10 +20,12 @@ Link: https://drive.google.com/file/d/1Nzqp5tkNK8iiA9B_o1vCYUOX3SASFdKi/view?usp
 - Authorization Code Flow with Proof Key for Code Exchange
 
 Authorization Code Flow with PKCE
+
 4 Components
-- React frontend for some application
-- Callback Server -> Middle man bw frontend and auth server for JWT retrieval
-- Auth Server -> Has its own frontend
+- React frontend 1 - For client application
+- Callback Server - Middle man bw frontend and auth server for JWT retrieval
+- React frontend 2 - login page for the auth server
+- Auth Server
 
 1. Frontend creates code_verifier and code_challenge
 2. Frontend sends auth code request and code callenge to auth server's /authorize endpoint
@@ -32,3 +34,8 @@ Authorization Code Flow with PKCE
 5. If creds are valid, auth server redirects the React frontend to the callback server, with the authorization code and code_verifier
 6. Callback server gives the auth server the code and code_verifier, and the auth server responds with an access token
 7. Callback server pipes back the access token to the frontend, which the frontend can put into its local storage
+
+Client app features:
+- Add, update, or delete users
+- Create, update, delete roles and permissions
+- Grant, update, or revoke permissions of users
