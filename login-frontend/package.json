@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "login-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,11 +11,15 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+  "scripts":  {
+    "start": "npm run lint-format-check && react-scripts start",
+    "build": "npm run lint-format-check && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js",
+    "format-fix": "prettier --write src/",
+    "format": "prettier src/ --check",
+    "lint-format-check": "npm run lint && npm run format"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +38,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.0"
   }
 }

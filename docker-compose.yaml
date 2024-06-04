@@ -1,0 +1,27 @@
+name: iam-system
+services:
+  client-app-frontend:
+    image: client-app/frontend
+    build: ./client-app-frontend
+    ports:
+      - "3000:80"
+  auth-backend:
+    image: auth/backend
+    build: ./auth_backend
+    ports:
+      - "5000:5000"
+  login-frontend:
+    image: login/frontend
+    build: ./login-frontend
+    ports:
+      - "8080:8080"
+  auth-db:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./auth-db/init.sql:/docker-entrypoint-initdb.d/init.sql 
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=auth_db
