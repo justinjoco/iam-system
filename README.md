@@ -21,10 +21,9 @@ Link: https://drive.google.com/file/d/1Nzqp5tkNK8iiA9B_o1vCYUOX3SASFdKi/view?usp
 
 Authorization Code Flow with PKCE
 
-4 Components
-- React frontend 1 - For client application. Create a router with a auth/callback path for redirection
-- React frontend 2 - login page for the auth server
-- Auth Backend
+3 Components
+- React Frontend; Client application. Create a router with a auth/callback path for redirection
+- Auth Backend - Will serve its own login page
 - Resource Backend
 
 1. Frontend creates code_verifier and code_challenge
