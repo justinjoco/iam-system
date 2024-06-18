@@ -6,13 +6,13 @@ handle_error() {
 
 trap 'handle_error $LINENO' ERR
 
-cd client-app-frontend 
+cd client_app
 npm run lint && npm run format-fix
 cd ..
-cd login-frontend 
-npm run lint && npm run format-fix
-cd ..
-cd auth_backend
+cd user_mgmt
 sh format.sh
 cd ..
-docker compose up -d --build
+cd login
+sh format.sh
+cd ..
+docker compose up --build

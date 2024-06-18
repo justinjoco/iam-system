@@ -1,37 +1,34 @@
 name: iam-system
 services:
-  client_app:
-    image: client-app/frontend
-    build: ./client_app
-    ports:
-      - "3000:80"
-  auth_server:
-    image: auth/backend
-    build: ./auth_server
-    ports:
-      - "5000:5000"
-  resource_server:
-    image: resource/backend
-    build: ./resource_server
+  #client_app:
+  #  image: client-app/frontend
+  #  build: ./client_app
+  #  ports:
+  #    - "3000:80"
+  #  depends_on:
+  #    - user_mgmt
+  #    - login
+  user_mgmt:
+    image: user_mgmt
+    build: ./user_mgmt
     ports:
       - "6000:5000"
+    depends_on:
+      - auth_db
+  login:
+    image: login
+    build: ./login
+    ports:
+      - "5000:5000"
+    depends_on:
+      - auth_db
   auth_db:
     image: postgres:16-alpine
     ports:
-      - "10000:5432"
+      - "5432:5432"
     volumes:
-      - ./auth_server/db/init.sql:/docker-entrypoint-initdb.d/init.sql 
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql 
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=admin
       - POSTGRES_DB=auth_db
-  resource_db:
-    image: postgres:16-alpine
-    ports:
-      - "11000:5432"
-    volumes:
-      - ./resource_server/db/init.sql:/docker-entrypoint-initdb.d/init.sql 
-    environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=admin
-      - POSTGRES_DB=resource_db
