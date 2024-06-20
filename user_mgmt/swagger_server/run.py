@@ -4,9 +4,11 @@ import connexion
 from connexion.middleware import MiddlewarePosition
 from starlette.middleware.cors import CORSMiddleware
 from swagger_server.db.base import db
+from swagger_server.logger import logger
 
 
 def create_app():
+    logger.info("Initializing app...")
     connex_app = connexion.FlaskApp(__name__, specification_dir='./swagger/')
     app = connex_app.app
     app.config["SQLALCHEMY_DATABASE_URI"
