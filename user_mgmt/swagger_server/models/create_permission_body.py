@@ -14,6 +14,7 @@ class CreatePermissionBody(Model):
 
     Do not edit the class manually.
     """
+
     def __init__(self, action: str=None, resource: str=None):  # noqa: E501
         """CreatePermissionBody - a model defined in Swagger
 
@@ -22,15 +23,9 @@ class CreatePermissionBody(Model):
         :param resource: The resource of this CreatePermissionBody.  # noqa: E501
         :type resource: str
         """
-        self.swagger_types = {
-            'action': str,
-            'resource': str
-        }
+        self.swagger_types = {'action': str, 'resource': str}
 
-        self.attribute_map = {
-            'action': 'action',
-            'resource': 'resource'
-        }
+        self.attribute_map = {'action': 'action', 'resource': 'resource'}
         self._action = action
         self._resource = resource
 

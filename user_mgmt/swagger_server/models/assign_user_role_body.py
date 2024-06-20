@@ -14,6 +14,7 @@ class AssignUserRoleBody(Model):
 
     Do not edit the class manually.
     """
+
     def __init__(self, user_id: str=None, role_id: str=None):  # noqa: E501
         """AssignUserRoleBody - a model defined in Swagger
 
@@ -22,15 +23,9 @@ class AssignUserRoleBody(Model):
         :param role_id: The role_id of this AssignUserRoleBody.  # noqa: E501
         :type role_id: str
         """
-        self.swagger_types = {
-            'user_id': str,
-            'role_id': str
-        }
+        self.swagger_types = {'user_id': str, 'role_id': str}
 
-        self.attribute_map = {
-            'user_id': 'userId',
-            'role_id': 'roleId'
-        }
+        self.attribute_map = {'user_id': 'userId', 'role_id': 'roleId'}
         self._user_id = user_id
         self._role_id = role_id
 

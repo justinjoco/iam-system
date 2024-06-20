@@ -14,7 +14,11 @@ class Permission(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, action: str=None, resource: str=None, roles: List[str]=None):  # noqa: E501
+
+    def __init__(self,
+                 action: str=None,
+                 resource: str=None,
+                 roles: List[str]=None):  # noqa: E501
         """Permission - a model defined in Swagger
 
         :param action: The action of this Permission.  # noqa: E501

@@ -14,19 +14,16 @@ class CreateRoleBody(Model):
 
     Do not edit the class manually.
     """
+
     def __init__(self, name: str=None):  # noqa: E501
         """CreateRoleBody - a model defined in Swagger
 
         :param name: The name of this CreateRoleBody.  # noqa: E501
         :type name: str
         """
-        self.swagger_types = {
-            'name': str
-        }
+        self.swagger_types = {'name': str}
 
-        self.attribute_map = {
-            'name': 'name'
-        }
+        self.attribute_map = {'name': 'name'}
         self._name = name
 
     @classmethod

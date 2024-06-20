@@ -14,7 +14,13 @@ class CreateUserBody(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, username: str=None, first_name: str=None, last_name: str=None, email: str=None, roles: List[str]=None):  # noqa: E501
+
+    def __init__(self,
+                 username: str=None,
+                 first_name: str=None,
+                 last_name: str=None,
+                 email: str=None,
+                 roles: List[str]=None):  # noqa: E501
         """CreateUserBody - a model defined in Swagger
 
         :param username: The username of this CreateUserBody.  # noqa: E501

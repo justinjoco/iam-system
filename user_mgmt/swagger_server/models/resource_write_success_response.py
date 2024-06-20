@@ -14,19 +14,16 @@ class ResourceWriteSuccessResponse(Model):
 
     Do not edit the class manually.
     """
+
     def __init__(self, message: str=None):  # noqa: E501
         """ResourceWriteSuccessResponse - a model defined in Swagger
 
         :param message: The message of this ResourceWriteSuccessResponse.  # noqa: E501
         :type message: str
         """
-        self.swagger_types = {
-            'message': str
-        }
+        self.swagger_types = {'message': str}
 
-        self.attribute_map = {
-            'message': 'message'
-        }
+        self.attribute_map = {'message': 'message'}
         self._message = message
 
     @classmethod

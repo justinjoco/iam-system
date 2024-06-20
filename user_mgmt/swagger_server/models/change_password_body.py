@@ -14,19 +14,16 @@ class ChangePasswordBody(Model):
 
     Do not edit the class manually.
     """
+
     def __init__(self, password: str=None):  # noqa: E501
         """ChangePasswordBody - a model defined in Swagger
 
         :param password: The password of this ChangePasswordBody.  # noqa: E501
         :type password: str
         """
-        self.swagger_types = {
-            'password': str
-        }
+        self.swagger_types = {'password': str}
 
-        self.attribute_map = {
-            'password': 'password'
-        }
+        self.attribute_map = {'password': 'password'}
         self._password = password
 
     @classmethod

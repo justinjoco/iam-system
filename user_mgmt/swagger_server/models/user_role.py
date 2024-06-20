@@ -14,7 +14,11 @@ class UserRole(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, id: str=None, user_id: str=None, role: str=None):  # noqa: E501
+
+    def __init__(self,
+                 id: str=None,
+                 user_id: str=None,
+                 role: str=None):  # noqa: E501
         """UserRole - a model defined in Swagger
 
         :param id: The id of this UserRole.  # noqa: E501
@@ -24,17 +28,9 @@ class UserRole(Model):
         :param role: The role of this UserRole.  # noqa: E501
         :type role: str
         """
-        self.swagger_types = {
-            'id': str,
-            'user_id': str,
-            'role': str
-        }
+        self.swagger_types = {'id': str, 'user_id': str, 'role': str}
 
-        self.attribute_map = {
-            'id': 'id',
-            'user_id': 'userId',
-            'role': 'role'
-        }
+        self.attribute_map = {'id': 'id', 'user_id': 'userId', 'role': 'role'}
         self._id = id
         self._user_id = user_id
         self._role = role

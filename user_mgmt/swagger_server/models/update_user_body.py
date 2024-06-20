@@ -14,7 +14,11 @@ class UpdateUserBody(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, first_name: str=None, last_name: str=None, email: str=None):  # noqa: E501
+
+    def __init__(self,
+                 first_name: str=None,
+                 last_name: str=None,
+                 email: str=None):  # noqa: E501
         """UpdateUserBody - a model defined in Swagger
 
         :param first_name: The first_name of this UpdateUserBody.  # noqa: E501

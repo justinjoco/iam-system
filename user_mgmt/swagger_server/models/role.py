@@ -14,7 +14,10 @@ class Role(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, name: str=None, permissions: List[str]=None):  # noqa: E501
+
+    def __init__(self,
+                 name: str=None,
+                 permissions: List[str]=None):  # noqa: E501
         """Role - a model defined in Swagger
 
         :param name: The name of this Role.  # noqa: E501
@@ -22,15 +25,9 @@ class Role(Model):
         :param permissions: The permissions of this Role.  # noqa: E501
         :type permissions: List[str]
         """
-        self.swagger_types = {
-            'name': str,
-            'permissions': List[str]
-        }
+        self.swagger_types = {'name': str, 'permissions': List[str]}
 
-        self.attribute_map = {
-            'name': 'name',
-            'permissions': 'permissions'
-        }
+        self.attribute_map = {'name': 'name', 'permissions': 'permissions'}
         self._name = name
         self._permissions = permissions
 
