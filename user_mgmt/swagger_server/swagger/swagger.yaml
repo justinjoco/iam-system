@@ -1,0 +1,862 @@
+openapi: 3.0.3
+info:
+  title: User Management Service
+  description: User Management Service
+  version: 1.0.0
+servers:
+- url: /
+security:
+- bearerAuth: []
+paths:
+  /user:
+    post:
+      tags:
+      - user
+      summary: Create user
+      operationId: create_user
+      requestBody:
+        description: Create user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserBody'
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.user_controller
+  /users:
+    get:
+      tags:
+      - user
+      summary: Get users
+      operationId: get_users
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+                x-content-type: application/json
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "404":
+          description: Resource was not found
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.user_controller
+  /user/{userId}:
+    get:
+      tags:
+      - user
+      summary: Get user by user id
+      operationId: get_user_by_id
+      parameters:
+      - name: userId
+        in: path
+        description: The id that needs to be fetched
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "404":
+          description: Resource was not found
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.user_controller
+    put:
+      tags:
+      - user
+      summary: Update info of user
+      operationId: update_user_by_id
+      parameters:
+      - name: userId
+        in: path
+        description: The id that needs to be fetched
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: Update user body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserBody'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "404":
+          description: Resource was not found
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.user_controller
+    delete:
+      tags:
+      - user
+      summary: Soft delete a user
+      operationId: delete_user_by_id
+      parameters:
+      - name: userId
+        in: path
+        description: The id that needs to be fetched
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "404":
+          description: Resource was not found
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.user_controller
+  /user/{userId}/changePassword:
+    put:
+      tags:
+      - user
+      summary: Change password of user given userId
+      operationId: change_user_password
+      parameters:
+      - name: userId
+        in: path
+        description: The id that needs to be fetched
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: Change password body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordBody'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "404":
+          description: Resource was not found
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.user_controller
+  /role:
+    post:
+      tags:
+      - role
+      summary: Create role
+      operationId: create_role
+      requestBody:
+        description: Created role object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRoleBody'
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.role_controller
+  /roles:
+    get:
+      tags:
+      - role
+      summary: Get roles
+      operationId: get_roles
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+                x-content-type: application/json
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.role_controller
+  /role/{roleName}:
+    get:
+      tags:
+      - role
+      summary: Get role by name
+      operationId: get_role_by_name
+      parameters:
+      - name: roleName
+        in: path
+        description: role name
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.role_controller
+  /role/{roleId}:
+    get:
+      tags:
+      - role
+      summary: Get role by id
+      operationId: get_role_by_id
+      parameters:
+      - name: roleId
+        in: path
+        description: role id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.role_controller
+  /permission:
+    post:
+      tags:
+      - permission
+      summary: Create permission
+      operationId: create_permission
+      requestBody:
+        description: Create permission object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePermissionBody'
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.permission_controller
+  /permissions:
+    get:
+      tags:
+      - permission
+      summary: Get permissions
+      operationId: get_permissions
+      parameters:
+      - name: action
+        in: query
+        description: permission action
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: read
+      - name: resource
+        in: query
+        description: permission resource
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: user
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Permission'
+                x-content-type: application/json
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.permission_controller
+  /permission/{permissionId}:
+    get:
+      tags:
+      - permission
+      summary: Get permission by id
+      operationId: get_permission_by_id
+      parameters:
+      - name: permissionId
+        in: path
+        description: permission id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permission'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.permission_controller
+  /assignment/userroles:
+    get:
+      tags:
+      - assignment
+      summary: get user roles
+      operationId: get_user_roles
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserRole'
+                x-content-type: application/json
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+  /assignment/userrole:
+    post:
+      tags:
+      - assignment
+      summary: assign role to user
+      operationId: assign_role_to_user
+      requestBody:
+        description: Create user role assignment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignUserRoleBody'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+  /assignment/userrole/{userRoleId}:
+    get:
+      tags:
+      - assignment
+      summary: get user role
+      operationId: get_user_role_by_id
+      parameters:
+      - name: userRoleId
+        in: path
+        description: user role Id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRole'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+    delete:
+      tags:
+      - assignment
+      summary: delete user role
+      operationId: delete_user_role_by_id
+      parameters:
+      - name: userRoleId
+        in: path
+        description: user role id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+  /assignment/rolepermissions:
+    get:
+      tags:
+      - assignment
+      summary: get role permissions
+      operationId: get_role_permissions
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RolePermission'
+                x-content-type: application/json
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+  /assignment/rolepermission:
+    post:
+      tags:
+      - assignment
+      summary: assign permission to role
+      operationId: assign_permission_to_role
+      requestBody:
+        description: Create role permission assignment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignRolePermissionBody'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+  /assignment/rolepermission/{rolePermissionId}:
+    get:
+      tags:
+      - assignment
+      summary: get role permission
+      operationId: get_role_permission_by_id
+      parameters:
+      - name: rolePermissionId
+        in: path
+        description: role permissionId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RolePermission'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+    delete:
+      tags:
+      - assignment
+      summary: delete role permission
+      operationId: delete_role_permission_by_id
+      parameters:
+      - name: rolePermissionId
+        in: path
+        description: role permissionId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceWriteSuccessResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+components:
+  schemas:
+    ResourceWriteSuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Resource created/updated/deleted
+      example:
+        message: Resource created/updated/deleted
+    CreateUserBody:
+      type: object
+      properties:
+        username:
+          type: string
+          example: theUser
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        email:
+          type: string
+          example: john@email.com
+        roles:
+          type: array
+          items:
+            type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: cdeaee5c-9794-46ce-b4c4-039ac06125e5
+        username:
+          type: string
+          example: theUser
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        email:
+          type: string
+          example: john@email.com
+        roles:
+          type: array
+          items:
+            type: string
+        permissions:
+          type: array
+          items:
+            type: string
+      example:
+        firstName: John
+        lastName: James
+        permissions:
+        - permissions
+        - permissions
+        roles:
+        - roles
+        - roles
+        id: cdeaee5c-9794-46ce-b4c4-039ac06125e5
+        email: john@email.com
+        username: theUser
+    ChangePasswordBody:
+      type: object
+      properties:
+        password:
+          type: string
+    UpdateUserBody:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        email:
+          type: string
+          example: john@email.com
+    CreateRoleBody:
+      type: object
+      properties:
+        name:
+          type: string
+          example: admin
+    CreatePermissionBody:
+      type: object
+      properties:
+        action:
+          type: string
+          example: read
+        resource:
+          type: string
+          example: user
+    Role:
+      type: object
+      properties:
+        name:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+      example:
+        permissions:
+        - permissions
+        - permissions
+        name: name
+    Permission:
+      type: object
+      properties:
+        action:
+          type: string
+        resource:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+      example:
+        resource: resource
+        roles:
+        - roles
+        - roles
+        action: action
+    UserRole:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+        role:
+          type: string
+          example: admin
+      example:
+        role: admin
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+    RolePermission:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        roleName:
+          type: string
+          example: admin
+        permissionValue:
+          type: string
+          example: write:user
+      example:
+        permissionValue: write:user
+        roleName: admin
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+    AssignUserRoleBody:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        roleId:
+          type: string
+          format: uuid
+    AssignRolePermissionBody:
+      type: object
+      properties:
+        permissionId:
+          type: string
+          format: uuid
+        roleId:
+          type: string
+          format: uuid
+  responses:
+    ClientError:
+      description: Client request error
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    ForbiddenError:
+      description: Access is forbidden
+    NotFoundError:
+      description: Resource was not found
+    ServerError:
+      description: Server ran into an internal error
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      x-bearerInfoFunc: swagger_server.controllers.authorization_controller.check_bearerAuth
+
