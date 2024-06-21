@@ -58,6 +58,8 @@ class AssignUserRoleBody(Model):
         :param user_id: The user_id of this AssignUserRoleBody.
         :type user_id: str
         """
+        if user_id is None:
+            raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
 
         self._user_id = user_id
 
@@ -79,5 +81,7 @@ class AssignUserRoleBody(Model):
         :param role_id: The role_id of this AssignUserRoleBody.
         :type role_id: str
         """
+        if role_id is None:
+            raise ValueError("Invalid value for `role_id`, must not be `None`")  # noqa: E501
 
         self._role_id = role_id

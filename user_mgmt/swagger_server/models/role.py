@@ -60,6 +60,8 @@ class Role(Model):
         :param name: The name of this Role.
         :type name: str
         """
+        if name is None:
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -81,5 +83,8 @@ class Role(Model):
         :param permissions: The permissions of this Role.
         :type permissions: List[str]
         """
+        if permissions is None:
+            raise ValueError(
+                "Invalid value for `permissions`, must not be `None`")  # noqa: E501
 
         self._permissions = permissions

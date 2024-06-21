@@ -55,5 +55,8 @@ class ChangePasswordBody(Model):
         :param password: The password of this ChangePasswordBody.
         :type password: str
         """
+        if password is None:
+            raise ValueError("Invalid value for `password`, must not be `None`"
+                             )  # noqa: E501
 
         self._password = password

@@ -1,0 +1,339 @@
+openapi: 3.0.3
+info:
+  title: Login Service
+  description: Login Service
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /authorize:
+    get:
+      tags:
+      - authorize
+      summary: Start authorization code flow
+      operationId: authorize
+      parameters:
+      - name: response_type
+        in: query
+        description: Indicates which OAuth 2.0 Flow you want to perform. Use code
+          for Authorization Code Grant (with and without PKCE). Use "code" for Authorization
+          Code without PKCE. Use "pkce" for Authorization Code with PKCE
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: code
+      - name: client_id
+        in: query
+        description: client id of application
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: cxzsewevdx
+      - name: state
+        in: query
+        description: An opaque value the client adds to the initial request that is
+          included when redirecting back to the client. This value must be used by
+          the client to prevent CSRF attacks.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: adfckjla1234
+      - name: redirect_uri
+        in: query
+        description: client app redirect uri
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: baseUrl/oauth/callback
+      - name: code_challenge_method
+        in: query
+        description: code challenge method for pkce
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: S256
+      - name: code_challenge
+        in: query
+        description: Generated challenge from the code_verifier
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            text/html: {}
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.authorize_controller
+  /token:
+    post:
+      tags:
+      - token
+      summary: Get access token
+      operationId: generate_token
+      requestBody:
+        description: Token request body
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "404":
+          description: Resource was not found
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.token_controller
+  /register:
+    get:
+      tags:
+      - login
+      summary: Get user account creation page
+      operationId: register_get
+      responses:
+        "200":
+          description: successful operation
+          content:
+            text/html: {}
+      x-openapi-router-controller: swagger_server.controllers.login_controller
+  /login:
+    post:
+      tags:
+      - login
+      summary: Post login creds
+      operationId: submit_login_credentials
+      parameters:
+      - name: client_id
+        in: query
+        description: client app id
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: dsafdsvcxz
+      - name: code_challenge
+        in: query
+        description: This is to be saved for later code verification
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: code_challenge_method
+        in: query
+        description: code challenge method for pkce
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: S256
+      - name: redirect_uri
+        in: query
+        description: client app redirect uri
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: baseUrl/oauth/callback
+      requestBody:
+        description: User login credentials
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginCredentials'
+      responses:
+        "200":
+          $ref: '#/components/schemas/DefaultAPIResponse'
+        "302":
+          description: "redirects to callback uri for token retrieval, if provided\
+            \ in POST login params and successful login"
+          headers:
+            Location:
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "404":
+          description: Resource was not found
+        "500":
+          description: Server ran into an internal error
+      x-openapi-router-controller: swagger_server.controllers.login_controller
+  /logout:
+    post:
+      tags:
+      - logout
+      summary: Expires refresh token of given user
+      operationId: logout
+      responses:
+        "200":
+          $ref: '#/components/schemas/DefaultAPIResponse'
+        "400":
+          description: Client request error
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access is forbidden
+        "500":
+          description: Server ran into an internal error
+      security:
+      - bearerAuth: []
+      x-openapi-router-controller: swagger_server.controllers.logout_controller
+  /.well-known/jwks.json:
+    get:
+      tags:
+      - jwks
+      summary: Json web key set
+      operationId: get_public_jwks
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JWK'
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.jwks_controller
+components:
+  schemas:
+    DefaultAPIResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    LoginCredentials:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          format: JWT
+        refresh_token:
+          type: string
+          format: JWT
+        token_type:
+          type: string
+          example: Bearer
+      example:
+        access_token: access_token
+        refresh_token: refresh_token
+        token_type: Bearer
+    JWK:
+      type: object
+      additionalProperties: true
+    TokenRequest:
+      required:
+      - client_id
+      - grant_type
+      - scope
+      type: object
+      properties:
+        grant_type:
+          type: string
+          description: "grant type of token. Valid values: [authorization_code, pkce,\
+            \ client_credentials, password, refresh]."
+          example: pkce
+        client_id:
+          type: string
+          description: client app identifier. Required for each grant type
+        client_secret:
+          type: string
+          description: client app secret. Required for client_credentials grant_type
+          example: xzvcsafdwqffds
+        scope:
+          type: string
+          description: The scopes which you want to request authorization for. These
+            must be separated by a space
+          example: read:user
+        redirect_uri:
+          type: string
+          description: This is required only if it was set at the GET /authorize endpoint.
+            The values from /authorize must match the value you set at /oauth/token.
+            Required for authorization_code and pkce grant_types
+          example: baseUrl/oauth/callback
+        code:
+          type: string
+          description: The Authorization Code received from the initial /authorize
+            call. Required for PKCE
+        code_verifier:
+          type: string
+          description: Cryptographically random key that was used to generate the
+            code_challenge passed to /authorize. Required for PKCE
+        username:
+          type: string
+          description: username used for password grant_type. Required for password
+            grant_type
+          example: admin
+        password:
+          type: string
+          description: password used for password grant_type. Required for password
+            grant_type
+          example: somePassword
+        refresh_token:
+          type: string
+          description: refresh token needed to regenerate JWT. Required for refresh
+            grant_type
+  responses:
+    ClientError:
+      description: Client request error
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    ForbiddenError:
+      description: Access is forbidden
+    NotFoundError:
+      description: Resource was not found
+    ServerError:
+      description: Server ran into an internal error
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      x-bearerInfoFunc: swagger_server.controllers.authorization_controller.check_bearerAuth
+

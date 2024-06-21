@@ -72,6 +72,8 @@ class Permission(Model):
         :param action: The action of this Permission.
         :type action: str
         """
+        if action is None:
+            raise ValueError("Invalid value for `action`, must not be `None`")  # noqa: E501
 
         self._action = action
 
@@ -93,6 +95,9 @@ class Permission(Model):
         :param resource: The resource of this Permission.
         :type resource: str
         """
+        if resource is None:
+            raise ValueError("Invalid value for `resource`, must not be `None`"
+                             )  # noqa: E501
 
         self._resource = resource
 
@@ -114,5 +119,7 @@ class Permission(Model):
         :param roles: The roles of this Permission.
         :type roles: List[str]
         """
+        if roles is None:
+            raise ValueError("Invalid value for `roles`, must not be `None`")  # noqa: E501
 
         self._roles = roles

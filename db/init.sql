@@ -45,9 +45,8 @@ CREATE TABLE IF NOT EXISTS "role_permission"(
 
 CREATE TABLE IF NOT EXISTS "permission_context"(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    permission_id UUID REFERENCES "permission"(id) NOT NULL
-    resource_id UUID NOT NULL,
-    resource_table TEXT NOT NULL
+    permission_id UUID REFERENCES "permission"(id) NOT NULL,
+    resource_id UUID NOT NULL
 ) INHERITS ("audit_entity");
 
 CREATE TABLE IF NOT EXISTS "refresh_token"(

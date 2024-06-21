@@ -63,6 +63,9 @@ class AssignRolePermissionBody(Model):
         :param permission_id: The permission_id of this AssignRolePermissionBody.
         :type permission_id: str
         """
+        if permission_id is None:
+            raise ValueError(
+                "Invalid value for `permission_id`, must not be `None`")  # noqa: E501
 
         self._permission_id = permission_id
 
@@ -84,5 +87,7 @@ class AssignRolePermissionBody(Model):
         :param role_id: The role_id of this AssignRolePermissionBody.
         :type role_id: str
         """
+        if role_id is None:
+            raise ValueError("Invalid value for `role_id`, must not be `None`")  # noqa: E501
 
         self._role_id = role_id

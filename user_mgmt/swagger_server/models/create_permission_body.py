@@ -58,6 +58,8 @@ class CreatePermissionBody(Model):
         :param action: The action of this CreatePermissionBody.
         :type action: str
         """
+        if action is None:
+            raise ValueError("Invalid value for `action`, must not be `None`")  # noqa: E501
 
         self._action = action
 
@@ -79,5 +81,8 @@ class CreatePermissionBody(Model):
         :param resource: The resource of this CreatePermissionBody.
         :type resource: str
         """
+        if resource is None:
+            raise ValueError("Invalid value for `resource`, must not be `None`"
+                             )  # noqa: E501
 
         self._resource = resource

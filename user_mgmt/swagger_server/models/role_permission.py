@@ -72,6 +72,8 @@ class RolePermission(Model):
         :param id: The id of this RolePermission.
         :type id: str
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 
@@ -93,6 +95,9 @@ class RolePermission(Model):
         :param role_name: The role_name of this RolePermission.
         :type role_name: str
         """
+        if role_name is None:
+            raise ValueError(
+                "Invalid value for `role_name`, must not be `None`")  # noqa: E501
 
         self._role_name = role_name
 
@@ -114,5 +119,8 @@ class RolePermission(Model):
         :param permission_value: The permission_value of this RolePermission.
         :type permission_value: str
         """
+        if permission_value is None:
+            raise ValueError(
+                "Invalid value for `permission_value`, must not be `None`")  # noqa: E501
 
         self._permission_value = permission_value

@@ -35,8 +35,8 @@ def get_permission_by_id(permission_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_permissions(action=None, resource=None):  # noqa: E501
-    """Get permissions
+def get_users_with_permissions(action, resource, resource_id):  # noqa: E501
+    """Get users with permissions to given resource with resourceId
 
      # noqa: E501
 
@@ -44,6 +44,8 @@ def get_permissions(action=None, resource=None):  # noqa: E501
     :type action: str
     :param resource: permission resource
     :type resource: str
+    :param resource_id: permission resource id
+    :type resource_id: 
 
     :rtype: List[Permission]
     """

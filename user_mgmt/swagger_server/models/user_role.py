@@ -64,6 +64,8 @@ class UserRole(Model):
         :param id: The id of this UserRole.
         :type id: str
         """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 
@@ -85,6 +87,8 @@ class UserRole(Model):
         :param user_id: The user_id of this UserRole.
         :type user_id: str
         """
+        if user_id is None:
+            raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
 
         self._user_id = user_id
 
@@ -106,5 +110,7 @@ class UserRole(Model):
         :param role: The role of this UserRole.
         :type role: str
         """
+        if role is None:
+            raise ValueError("Invalid value for `role`, must not be `None`")  # noqa: E501
 
         self._role = role

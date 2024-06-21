@@ -179,6 +179,7 @@ paths:
       tags:
         - jwks
       summary: Json web key set
+      operationId: getPublicJWKS
       responses:
         '200':
           description: successful operation

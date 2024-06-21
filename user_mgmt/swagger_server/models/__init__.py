@@ -3,6 +3,7 @@
 # flake8: noqa
 from __future__ import absolute_import
 # import models into model package
+from swagger_server.models.assign_context_permission_body import AssignContextPermissionBody
 from swagger_server.models.assign_role_permission_body import AssignRolePermissionBody
 from swagger_server.models.assign_user_role_body import AssignUserRoleBody
 from swagger_server.models.change_password_body import ChangePasswordBody
