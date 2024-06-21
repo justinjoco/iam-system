@@ -1,0 +1,3 @@
+USERNAME,FIRSTNAME,LASTNAME,EMAIL,ROLE,PASSWORD
+justinjoco,Justin,Joco,justin.joco@gmail.com,admin,myPassword
+otherUser,Other,User,other.user@gmail.com,,swordfish

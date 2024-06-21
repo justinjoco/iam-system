@@ -70,3 +70,9 @@ CREATE TABLE IF NOT EXISTS "login_audit"(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES "user"(id) NOT NULL
 ) INHERITS ("audit_entity");
+
+CREATE TABLE IF NOT EXISTS "client"(
+    id UUID PRIMARY KEY,
+    saltedSecretHash TEXT NOT NULL,
+    salt TEXT NOT NULL
+) INHERITS ("audit_entity");
