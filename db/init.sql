@@ -52,6 +52,14 @@ CREATE TABLE IF NOT EXISTS "refresh_token"(
     parent_id UUID
 ) INHERITS ("audit_entity");
 
+CREATE TABLE IF NOT EXISTS "authorization_code_challenge"(
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES "user"(id) NOT NULL,
+    expiry_date TIMESTAMP WITH TIME ZONE NOT NULL,
+    code_challenge TEXT NOT NULL,
+    code_challenge_method TEXT NOT NULL
+) INHERITS ("audit_entity");
+
 CREATE TABLE IF NOT EXISTS "login_audit"(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES "user"(id) NOT NULL
