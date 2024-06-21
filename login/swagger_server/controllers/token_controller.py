@@ -5,16 +5,8 @@ from swagger_server.models.token_response import TokenResponse  # noqa: E501
 from swagger_server import util
 
 
-def generate_token(grant_type=None,
-                   client_id=None,
-                   client_secret=None,
-                   scope=None,
-                   redirect_uri=None,
-                   code=None,
-                   code_verifier=None,
-                   username=None,
-                   password=None,
-                   refresh_token=None):  # noqa: E501
+def generate_token(grant_type, client_id, client_secret, scope, redirect_uri,
+                   code, code_verifier, refresh_token):  # noqa: E501
     """Get access token
 
      # noqa: E501
@@ -33,10 +25,6 @@ def generate_token(grant_type=None,
     :type code: str
     :param code_verifier: 
     :type code_verifier: str
-    :param username: 
-    :type username: str
-    :param password: 
-    :type password: str
     :param refresh_token: 
     :type refresh_token: str
 

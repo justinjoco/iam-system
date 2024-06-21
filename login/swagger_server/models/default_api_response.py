@@ -55,5 +55,7 @@ class DefaultAPIResponse(Model):
         :param message: The message of this DefaultAPIResponse.
         :type message: str
         """
+        if message is None:
+            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
         self._message = message

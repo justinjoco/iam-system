@@ -16,11 +16,12 @@ def register_get():  # noqa: E501
     return 'do some magic!'
 
 
-def submit_login_credentials(body=None,
+def submit_login_credentials(body,
                              client_id=None,
                              code_challenge=None,
                              code_challenge_method=None,
-                             redirect_uri=None):  # noqa: E501
+                             redirect_uri=None,
+                             state=None):  # noqa: E501
     """Post login creds
 
      # noqa: E501
@@ -35,6 +36,8 @@ def submit_login_credentials(body=None,
     :type code_challenge_method: str
     :param redirect_uri: client app redirect uri
     :type redirect_uri: str
+    :param state: An opaque value the client adds to the initial request that is included when redirecting back to the client. This value must be used by the client to prevent CSRF attacks.
+    :type state: str
 
     :rtype: None
     """

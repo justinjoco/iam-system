@@ -7,7 +7,7 @@ from swagger_server.models.role import Role  # noqa: E501
 from swagger_server import util
 
 
-def create_role(body=None):  # noqa: E501
+def create_role(body):  # noqa: E501
     """Create role
 
      # noqa: E501

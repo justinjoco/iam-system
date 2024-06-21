@@ -10,7 +10,7 @@ from swagger_server.models.user_role import UserRole  # noqa: E501
 from swagger_server import util
 
 
-def assign_context_to_permission(body=None):  # noqa: E501
+def assign_context_to_permission(body):  # noqa: E501
     """assign context to permission
 
      # noqa: E501
@@ -26,7 +26,7 @@ def assign_context_to_permission(body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def assign_permission_to_role(body=None):  # noqa: E501
+def assign_permission_to_role(body):  # noqa: E501
     """assign permission to role
 
      # noqa: E501
@@ -41,7 +41,7 @@ def assign_permission_to_role(body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def assign_role_to_user(body=None):  # noqa: E501
+def assign_role_to_user(body):  # noqa: E501
     """assign role to user
 
      # noqa: E501

@@ -7,7 +7,7 @@ from swagger_server.models.resource_write_success_response import ResourceWriteS
 from swagger_server import util
 
 
-def create_permission(body=None):  # noqa: E501
+def create_permission(body):  # noqa: E501
     """Create permission
 
      # noqa: E501

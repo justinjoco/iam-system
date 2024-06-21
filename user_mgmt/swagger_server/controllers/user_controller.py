@@ -9,7 +9,7 @@ from swagger_server.models.user import User  # noqa: E501
 from swagger_server import util
 
 
-def change_user_password(user_id, body=None):  # noqa: E501
+def change_user_password(user_id, body):  # noqa: E501
     """Change password of user given userId
 
      # noqa: E501
@@ -26,7 +26,7 @@ def change_user_password(user_id, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def create_user(body=None):  # noqa: E501
+def create_user(body):  # noqa: E501
     """Create user
 
      # noqa: E501
@@ -78,7 +78,7 @@ def get_users():  # noqa: E501
     return 'do some magic!'
 
 
-def update_user_by_id(user_id, body=None):  # noqa: E501
+def update_user_by_id(user_id, body):  # noqa: E501
     """Update info of user
 
      # noqa: E501

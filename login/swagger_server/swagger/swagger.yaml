@@ -96,6 +96,7 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/TokenRequest'
+        required: true
       responses:
         "200":
           description: successful operation
@@ -168,12 +169,24 @@ paths:
         schema:
           type: string
           example: baseUrl/oauth/callback
+      - name: state
+        in: query
+        description: An opaque value the client adds to the initial request that is
+          included when redirecting back to the client. This value must be used by
+          the client to prevent CSRF attacks.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: adfckjla1234
       requestBody:
         description: User login credentials
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/LoginCredentials'
+        required: true
       responses:
         "200":
           $ref: '#/components/schemas/DefaultAPIResponse'
@@ -237,11 +250,16 @@ paths:
 components:
   schemas:
     DefaultAPIResponse:
+      required:
+      - message
       type: object
       properties:
         message:
           type: string
     LoginCredentials:
+      required:
+      - password
+      - username
       type: object
       properties:
         username:
@@ -249,6 +267,10 @@ components:
         password:
           type: string
     TokenResponse:
+      required:
+      - access_token
+      - refresh_token
+      - token_type
       type: object
       properties:
         access_token:
@@ -305,16 +327,6 @@ components:
           type: string
           description: Cryptographically random key that was used to generate the
             code_challenge passed to /authorize. Required for PKCE
-        username:
-          type: string
-          description: username used for password grant_type. Required for password
-            grant_type
-          example: admin
-        password:
-          type: string
-          description: password used for password grant_type. Required for password
-            grant_type
-          example: somePassword
         refresh_token:
           type: string
           description: refresh token needed to regenerate JWT. Required for refresh

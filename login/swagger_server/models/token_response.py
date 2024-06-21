@@ -72,6 +72,9 @@ class TokenResponse(Model):
         :param access_token: The access_token of this TokenResponse.
         :type access_token: str
         """
+        if access_token is None:
+            raise ValueError(
+                "Invalid value for `access_token`, must not be `None`")  # noqa: E501
 
         self._access_token = access_token
 
@@ -93,6 +96,9 @@ class TokenResponse(Model):
         :param refresh_token: The refresh_token of this TokenResponse.
         :type refresh_token: str
         """
+        if refresh_token is None:
+            raise ValueError(
+                "Invalid value for `refresh_token`, must not be `None`")  # noqa: E501
 
         self._refresh_token = refresh_token
 
@@ -114,5 +120,8 @@ class TokenResponse(Model):
         :param token_type: The token_type of this TokenResponse.
         :type token_type: str
         """
+        if token_type is None:
+            raise ValueError(
+                "Invalid value for `token_type`, must not be `None`")  # noqa: E501
 
         self._token_type = token_type

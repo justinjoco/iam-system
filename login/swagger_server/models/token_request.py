@@ -23,8 +23,6 @@ class TokenRequest(Model):
                  redirect_uri: str=None,
                  code: str=None,
                  code_verifier: str=None,
-                 username: str=None,
-                 password: str=None,
                  refresh_token: str=None):  # noqa: E501
         """TokenRequest - a model defined in Swagger
 
@@ -42,10 +40,6 @@ class TokenRequest(Model):
         :type code: str
         :param code_verifier: The code_verifier of this TokenRequest.  # noqa: E501
         :type code_verifier: str
-        :param username: The username of this TokenRequest.  # noqa: E501
-        :type username: str
-        :param password: The password of this TokenRequest.  # noqa: E501
-        :type password: str
         :param refresh_token: The refresh_token of this TokenRequest.  # noqa: E501
         :type refresh_token: str
         """
@@ -57,8 +51,6 @@ class TokenRequest(Model):
             'redirect_uri': str,
             'code': str,
             'code_verifier': str,
-            'username': str,
-            'password': str,
             'refresh_token': str
         }
 
@@ -70,8 +62,6 @@ class TokenRequest(Model):
             'redirect_uri': 'redirect_uri',
             'code': 'code',
             'code_verifier': 'code_verifier',
-            'username': 'username',
-            'password': 'password',
             'refresh_token': 'refresh_token'
         }
         self._grant_type = grant_type
@@ -81,8 +71,6 @@ class TokenRequest(Model):
         self._redirect_uri = redirect_uri
         self._code = code
         self._code_verifier = code_verifier
-        self._username = username
-        self._password = password
         self._refresh_token = refresh_token
 
     @classmethod
@@ -264,52 +252,6 @@ class TokenRequest(Model):
         """
 
         self._code_verifier = code_verifier
-
-    @property
-    def username(self) -> str:
-        """Gets the username of this TokenRequest.
-
-        username used for password grant_type. Required for password grant_type  # noqa: E501
-
-        :return: The username of this TokenRequest.
-        :rtype: str
-        """
-        return self._username
-
-    @username.setter
-    def username(self, username: str):
-        """Sets the username of this TokenRequest.
-
-        username used for password grant_type. Required for password grant_type  # noqa: E501
-
-        :param username: The username of this TokenRequest.
-        :type username: str
-        """
-
-        self._username = username
-
-    @property
-    def password(self) -> str:
-        """Gets the password of this TokenRequest.
-
-        password used for password grant_type. Required for password grant_type  # noqa: E501
-
-        :return: The password of this TokenRequest.
-        :rtype: str
-        """
-        return self._password
-
-    @password.setter
-    def password(self, password: str):
-        """Sets the password of this TokenRequest.
-
-        password used for password grant_type. Required for password grant_type  # noqa: E501
-
-        :param password: The password of this TokenRequest.
-        :type password: str
-        """
-
-        self._password = password
 
     @property
     def refresh_token(self) -> str:

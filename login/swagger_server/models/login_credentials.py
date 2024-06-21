@@ -58,6 +58,9 @@ class LoginCredentials(Model):
         :param username: The username of this LoginCredentials.
         :type username: str
         """
+        if username is None:
+            raise ValueError("Invalid value for `username`, must not be `None`"
+                             )  # noqa: E501
 
         self._username = username
 
@@ -79,5 +82,8 @@ class LoginCredentials(Model):
         :param password: The password of this LoginCredentials.
         :type password: str
         """
+        if password is None:
+            raise ValueError("Invalid value for `password`, must not be `None`"
+                             )  # noqa: E501
 
         self._password = password
