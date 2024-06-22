@@ -24,7 +24,7 @@ def create_app():
         allow_methods=["*"],
         allow_headers=["*"], )
     connex_app.add_api('swagger.yaml',
-                       arguments={'title': 'User Management Service'},
+                       arguments={'title': 'Login Service'},
                        pythonic_params=True)
     return connex_app
 
