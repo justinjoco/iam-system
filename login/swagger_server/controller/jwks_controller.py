@@ -3,6 +3,7 @@ import six
 
 from swagger_server.models.jwk import JWK  # noqa: E501
 from swagger_server import util
+from swagger_server.service.jwks_service import jwks_service
 
 
 def get_public_jwks():  # noqa: E501

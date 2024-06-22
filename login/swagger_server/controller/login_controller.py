@@ -3,6 +3,7 @@ import six
 
 from swagger_server.models.login_credentials import LoginCredentials  # noqa: E501
 from swagger_server import util
+from swagger_server.service.login_service import login_service
 
 
 def register_get():  # noqa: E501

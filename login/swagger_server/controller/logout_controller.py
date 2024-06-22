@@ -2,6 +2,7 @@ import connexion
 import six
 
 from swagger_server import util
+from swagger_server.service.logout_service import logout_service
 
 
 def logout():  # noqa: E501

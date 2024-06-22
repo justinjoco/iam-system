@@ -7,6 +7,7 @@ from swagger_server.models.resource_write_success_response import ResourceWriteS
 from swagger_server.models.update_user_body import UpdateUserBody  # noqa: E501
 from swagger_server.models.user import User  # noqa: E501
 from swagger_server import util
+from swagger_server.service.user_service import user_service
 
 
 def change_user_password(user_id, body):  # noqa: E501

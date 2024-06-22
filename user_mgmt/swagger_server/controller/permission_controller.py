@@ -5,6 +5,7 @@ from swagger_server.models.create_permission_body import CreatePermissionBody  #
 from swagger_server.models.permission import Permission  # noqa: E501
 from swagger_server.models.resource_write_success_response import ResourceWriteSuccessResponse  # noqa: E501
 from swagger_server import util
+from swagger_server.service.permission_service import permission_service
 
 
 def create_permission(body):  # noqa: E501

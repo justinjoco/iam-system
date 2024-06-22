@@ -2,6 +2,7 @@ import connexion
 import six
 
 from swagger_server import util
+from swagger_server.service.authorize_service import authorize_service
 
 
 def authorize(response_type=None,

@@ -3,6 +3,7 @@ import six
 
 from swagger_server.models.token_response import TokenResponse  # noqa: E501
 from swagger_server import util
+from swagger_server.service.token_service import token_service
 
 
 def generate_token(grant_type, client_id, client_secret, scope, redirect_uri,

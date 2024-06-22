@@ -8,6 +8,7 @@ from swagger_server.models.resource_write_success_response import ResourceWriteS
 from swagger_server.models.role_permission import RolePermission  # noqa: E501
 from swagger_server.models.user_role import UserRole  # noqa: E501
 from swagger_server import util
+from swagger_server.service.assignment_service import assignment_service
 
 
 def assign_context_to_permission(body):  # noqa: E501

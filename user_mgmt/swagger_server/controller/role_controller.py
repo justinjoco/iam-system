@@ -5,6 +5,7 @@ from swagger_server.models.create_role_body import CreateRoleBody  # noqa: E501
 from swagger_server.models.resource_write_success_response import ResourceWriteSuccessResponse  # noqa: E501
 from swagger_server.models.role import Role  # noqa: E501
 from swagger_server import util
+from swagger_server.service.role_service import role_service
 
 
 def create_role(body):  # noqa: E501

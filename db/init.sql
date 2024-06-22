@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS "refresh_token"(
     parent_id UUID
 ) INHERITS ("audit_entity");
 
-CREATE TABLE IF NOT EXISTS "authorization_code_challenge"(
+CREATE TABLE IF NOT EXISTS "authorization_code"(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES "user"(id) NOT NULL,
     expiry_date TIMESTAMP WITH TIME ZONE NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS "login_audit"(
     user_id UUID REFERENCES "user"(id) NOT NULL
 ) INHERITS ("audit_entity");
 
-CREATE TABLE IF NOT EXISTS "client"(
+CREATE TABLE IF NOT EXISTS "client_credentials"(
     id UUID PRIMARY KEY,
     saltedSecretHash TEXT NOT NULL,
     salt TEXT NOT NULL
