@@ -83,7 +83,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.authorize_controller
+      x-openapi-router-controller: swagger_server.controller.authorize_controller
   /token:
     post:
       tags:
@@ -114,7 +114,7 @@ paths:
           description: Resource was not found
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.token_controller
+      x-openapi-router-controller: swagger_server.controller.token_controller
   /register:
     get:
       tags:
@@ -126,7 +126,7 @@ paths:
           description: successful operation
           content:
             text/html: {}
-      x-openapi-router-controller: swagger_server.controllers.login_controller
+      x-openapi-router-controller: swagger_server.controller.login_controller
   /login:
     post:
       tags:
@@ -209,7 +209,7 @@ paths:
           description: Resource was not found
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.login_controller
+      x-openapi-router-controller: swagger_server.controller.login_controller
   /logout:
     post:
       tags:
@@ -229,7 +229,7 @@ paths:
           description: Server ran into an internal error
       security:
       - bearerAuth: []
-      x-openapi-router-controller: swagger_server.controllers.logout_controller
+      x-openapi-router-controller: swagger_server.controller.logout_controller
   /.well-known/jwks.json:
     get:
       tags:
@@ -246,7 +246,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/JWK'
                 x-content-type: application/json
-      x-openapi-router-controller: swagger_server.controllers.jwks_controller
+      x-openapi-router-controller: swagger_server.controller.jwks_controller
 components:
   schemas:
     DefaultAPIResponse:
@@ -347,5 +347,5 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      x-bearerInfoFunc: swagger_server.controllers.authorization_controller.check_bearerAuth
+      x-bearerInfoFunc: swagger_server.controller.authorization_controller.check_bearerAuth
 

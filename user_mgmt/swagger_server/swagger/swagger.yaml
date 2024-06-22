@@ -35,7 +35,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.user_controller
+      x-openapi-router-controller: swagger_server.controller.user_controller
   /users:
     get:
       tags:
@@ -62,7 +62,7 @@ paths:
           description: Resource was not found
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.user_controller
+      x-openapi-router-controller: swagger_server.controller.user_controller
   /user/{userId}:
     get:
       tags:
@@ -96,7 +96,7 @@ paths:
           description: Resource was not found
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.user_controller
+      x-openapi-router-controller: swagger_server.controller.user_controller
     put:
       tags:
       - user
@@ -135,7 +135,7 @@ paths:
           description: Resource was not found
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.user_controller
+      x-openapi-router-controller: swagger_server.controller.user_controller
     delete:
       tags:
       - user
@@ -168,7 +168,7 @@ paths:
           description: Resource was not found
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.user_controller
+      x-openapi-router-controller: swagger_server.controller.user_controller
   /user/{userId}/changePassword:
     put:
       tags:
@@ -208,7 +208,7 @@ paths:
           description: Resource was not found
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.user_controller
+      x-openapi-router-controller: swagger_server.controller.user_controller
   /role:
     post:
       tags:
@@ -236,7 +236,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.role_controller
+      x-openapi-router-controller: swagger_server.controller.role_controller
   /roles:
     get:
       tags:
@@ -261,7 +261,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.role_controller
+      x-openapi-router-controller: swagger_server.controller.role_controller
   /role/{roleName}:
     get:
       tags:
@@ -292,7 +292,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.role_controller
+      x-openapi-router-controller: swagger_server.controller.role_controller
   /role/{roleId}:
     get:
       tags:
@@ -324,7 +324,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.role_controller
+      x-openapi-router-controller: swagger_server.controller.role_controller
   /permission:
     post:
       tags:
@@ -352,7 +352,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.permission_controller
+      x-openapi-router-controller: swagger_server.controller.permission_controller
   /permission/users:
     get:
       tags:
@@ -405,7 +405,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.permission_controller
+      x-openapi-router-controller: swagger_server.controller.permission_controller
   /permission/{permissionId}:
     get:
       tags:
@@ -437,7 +437,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.permission_controller
+      x-openapi-router-controller: swagger_server.controller.permission_controller
   /assignment/userroles:
     get:
       tags:
@@ -462,7 +462,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
   /assignment/userrole:
     post:
       tags:
@@ -490,7 +490,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
   /assignment/userrole/{userRoleId}:
     get:
       tags:
@@ -522,7 +522,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
     delete:
       tags:
       - assignment
@@ -553,7 +553,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
   /assignment/rolepermissions:
     get:
       tags:
@@ -578,7 +578,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
   /assignment/rolepermission:
     post:
       tags:
@@ -606,7 +606,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
   /assignment/rolepermission/{rolePermissionId}:
     get:
       tags:
@@ -638,7 +638,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
     delete:
       tags:
       - assignment
@@ -669,7 +669,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
   /assignment/permissioncontext:
     get:
       tags:
@@ -691,7 +691,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
     post:
       tags:
       - assignment
@@ -718,7 +718,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
   /assignment/permissioncontext/{permissionContextId}:
     get:
       tags:
@@ -750,7 +750,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
     delete:
       tags:
       - assignment
@@ -781,7 +781,7 @@ paths:
           description: Access is forbidden
         "500":
           description: Server ran into an internal error
-      x-openapi-router-controller: swagger_server.controllers.assignment_controller
+      x-openapi-router-controller: swagger_server.controller.assignment_controller
 components:
   schemas:
     ResourceWriteSuccessResponse:
@@ -1025,5 +1025,5 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      x-bearerInfoFunc: swagger_server.controllers.authorization_controller.check_bearerAuth
+      x-bearerInfoFunc: swagger_server.controller.authorization_controller.check_bearerAuth
 
