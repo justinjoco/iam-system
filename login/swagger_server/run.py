@@ -12,7 +12,7 @@ def create_app():
     connex_app = connexion.FlaskApp(__name__, specification_dir='./swagger/')
     app = connex_app.app
     app.config["SQLALCHEMY_DATABASE_URI"
-               ] = "postgresql://admin:password@auth_db/auth_db"
+               ] = "postgresql://admin:password@postgres/auth_db"
     # initialize the app with the extension
     db.init_app(app)
 

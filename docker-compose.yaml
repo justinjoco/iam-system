@@ -14,15 +14,15 @@ services:
     ports:
       - "6000:5000"
     depends_on:
-      - auth_db
+      - postgres
   login:
     image: login
     build: ./login
     ports:
       - "5000:5000"
     depends_on:
-      - auth_db
-  auth_db:
+      - postgres
+  postgres:
     image: postgres:16-alpine
     ports:
       - "5432:5432"
