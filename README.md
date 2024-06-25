@@ -15,8 +15,7 @@ Link: https://drive.google.com/file/d/1Nzqp5tkNK8iiA9B_o1vCYUOX3SASFdKi/view?usp
 
 ### TODO
 - Client Credentials
-- Resource Owner Password
-- Authorization Code Flow
+- Refresh Token
 - Authorization Code Flow with Proof Key for Code Exchange
 
 Authorization Code Flow with PKCE
@@ -35,6 +34,17 @@ Authorization Code Flow with PKCE
 7. Callback path puts the access token into session storage
 
 Client app features:
-- Add, update, or delete users
-- Create, update, delete roles and permissions
-- Grant, update, or revoke permissions of users
+- User account page
+- Org chart
+    - Users with direct reports can add, update, or delete users in their reports
+    - Users with direct reports can demote/promote permission roles, with self-balancing
+    - Users can view user accounts of the entire org
+    - Users can only see the permissions of themselves and their direct reports
+
+Role hierarchy (from lowest to highest) with respect to access management:
+- Individual contributor
+- Manager
+- Director
+- Vice president
+- C-suite
+- Chief information officer (super admin -> can add, update, and delete any user)
