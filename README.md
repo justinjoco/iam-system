@@ -36,7 +36,9 @@ Authorization Code Flow with PKCE
 Client app features:
 - User account page
 - Org chart
-    - Users with direct reports can add, update, or delete users in their reports
+    - Users with direct reports can add, update, or delete users in their reports. User can edit permissions of reports with lower roles.
+    - Users cannot be a direct report of a user with a lower role than them (eg. a director cannot be a direct report of a manager); super admins or admins can be a direct report of any since superadmin and admin are special roles for IT
+        - There can only be one super admin at any given time
     - Users with direct reports can demote/promote permission roles, with self-balancing
     - Users can view user accounts of the entire org
     - Users can only see the permissions of themselves and their direct reports
@@ -47,4 +49,5 @@ Role hierarchy (from lowest to highest) with respect to access management:
 - Director
 - Vice president
 - C-suite
-- Chief information officer (super admin -> can add, update, and delete any user)
+- Admin (admin -> can add, update, and delete any user, except other admins or super admin)
+- SuperAdmin (admin -> can add, update, and delete any user)
