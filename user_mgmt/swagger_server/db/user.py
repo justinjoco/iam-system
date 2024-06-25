@@ -15,6 +15,9 @@ class User(AuditEntity):
     email: Mapped[str] = mapped_column(nullable=False)
     first_name: Mapped[str] = mapped_column(nullable=False)
     last_name: Mapped[str] = mapped_column(nullable=False)
+    title: Mapped[str] = mapped_column(nullable=False)
+    role: Mapped[str] = mapped_column(nullable=False)
+    manager_id: Mapped[UUID] = mapped_column()
     is_deactivated: Mapped[bool] = mapped_column(nullable=False,
                                                  server_default=FetchedValue())
 

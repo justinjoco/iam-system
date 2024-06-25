@@ -20,7 +20,8 @@ class CreateUserBody(Model):
                  first_name: str=None,
                  last_name: str=None,
                  email: str=None,
-                 roles: List[str]=None):  # noqa: E501
+                 title: str=None,
+                 role: str=None):  # noqa: E501
         """CreateUserBody - a model defined in Swagger
 
         :param username: The username of this CreateUserBody.  # noqa: E501
