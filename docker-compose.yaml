@@ -8,27 +8,37 @@ services:
   #  depends_on:
   #    - user_mgmt
   #    - login
-  user_mgmt:
-    image: user_mgmt
-    build: ./user_mgmt
+  auth_server:
+    image: auth_server
+    build: ./auth_server
     ports:
-      - "6000:5000"
+      - "8000:8000"
     depends_on:
-      - postgres
-  login:
-    image: login
-    build: ./login
+      - auth_db
+  api_server:
+    image: api_server
+    build: ./api_server
     ports:
-      - "5000:5000"
+      - "9000:8000"
     depends_on:
-      - postgres
-  postgres:
+      - api_db
+  auth_db:
     image: postgres:16-alpine
     ports:
       - "5432:5432"
-    volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql 
+  #  volumes:
+  #    - ./auth_db/init.sql:/docker-entrypoint-initdb.d/init.sql 
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=admin
       - POSTGRES_DB=auth_db
+  api_db:
+    image: postgres:16-alpine
+    ports:
+      - "5433:5432"
+  #  volumes:
+   #   - ./api_db/init.sql:/docker-entrypoint-initdb.d/init.sql 
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=api_db
