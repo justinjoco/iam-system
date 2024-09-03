@@ -18,5 +18,5 @@ then
     echo "PostgreSQL started"
 fi
 
-python manage.py migrate
-gunicorn auth_server.wsgi:application --bind 0.0.0.0:8000
+python manage.py migrate --no-input
+gunicorn "$APP_NAME.wsgi:application" --bind 0.0.0.0:8000
