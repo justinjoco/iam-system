@@ -13,6 +13,8 @@ services:
     build: ./auth_server
     ports:
       - "8000:8000"
+    env_file:
+      ./auth_server/.env
     depends_on:
       - auth_db
   api_server:
@@ -20,6 +22,8 @@ services:
     build: ./api_server
     ports:
       - "9000:8000"
+    env_file:
+      ./api_server/.env
     depends_on:
       - api_db
   auth_db:
