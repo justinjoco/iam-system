@@ -6,4 +6,4 @@ handle_error() {
 
 trap 'handle_error $LINENO' ERR
 
-docker compose down -v
+docker compose down
