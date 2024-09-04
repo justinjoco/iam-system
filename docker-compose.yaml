@@ -8,7 +8,7 @@ services:
   #  depends_on:
   #    - user_mgmt
   #    - login
-  auth_server:
+  auth-server:
     image: auth_server
     build: ./auth_server
     ports:
@@ -17,7 +17,7 @@ services:
       ./auth_server/.env
     depends_on:
       - auth_db
-  api_server:
+  api-server:
     image: api_server
     build: ./api_server
     ports:

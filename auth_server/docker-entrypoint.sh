@@ -18,5 +18,7 @@ then
     echo "PostgreSQL started"
 fi
 
+export OIDC_RSA_PRIVATE_KEY=$(cat oidc.key)
 python manage.py migrate --no-input
+python manage.py collectstatic --no-input
 gunicorn "$APP_NAME.wsgi:application" --bind 0.0.0.0:8000

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s%2ct)q3v!l^_32(kx2tnh=50kbe-%_68#__%ytvabhvsv7)3g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oauth2_provider',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +125,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        ),
+    'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.IsAuthenticated',
+        )
+}
+
+OAUTH2_PROVIDER = {
+    'RESOURCE_SERVER_INTROSPECTION_URL': 'http://auth-server:8000/o/introspect/',
+    # Below is the resource server's (client_id, client_secret) tuple registered with the Auth server. This resource server must be registered as an application with the Client Credentials grant.
+    'RESOURCE_SERVER_INTROSPECTION_CREDENTIALS': (os.environ.get("RESOURCE_SERVER_CLIENT_ID", "client_id"),os.environ.get("RESOURCE_SERVER_CLIENT_SECRET", "client_secret")),
+}

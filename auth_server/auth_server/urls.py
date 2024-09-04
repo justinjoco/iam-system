@@ -15,8 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf import settings
+
+from django.urls import path, include
+admin.autodiscover()
+from oauth2_provider import urls as oauth2_urls
+from user.views import UserList, UserDetails, GroupList
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('o/', include(oauth2_urls)),
+    path('users/', UserList.as_view()),
+    path('users/<pk>/', UserDetails.as_view()),
+    path('groups/', GroupList.as_view())
 ]

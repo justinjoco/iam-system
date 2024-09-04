@@ -13,3 +13,5 @@ Link: https://drive.google.com/file/d/1Nzqp5tkNK8iiA9B_o1vCYUOX3SASFdKi/view?usp
 
 ### TODO
 - Login flow
+
+docker exec -it containerId python manage.py createsuperuser
